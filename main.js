@@ -1,13 +1,11 @@
 // Exercise 1: Triangle Classification
 
 const getTriangleType = (a, b, c) => {
-    if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number" || a <= 0 || b <= 0 || c <= 0) {
-        return `Invalid input`;
-    }
+    if (typeof a !== "number" || a <= 0
+        || typeof b !== "number" || b <= 0
+        || typeof c !== "number" || c <= 0) return `Invalid input`;
     if (a + b > c && a + c > b && b + c >a) {
-        if (a === b && b === c) {
-            return `Equilateral`;
-        }
+        if (a === b && b === c) return `Equilateral`;
 
         const isRight = (a * a + b * b === c * c || a * a + c * c === b * b || c * c + b * b === a * a);
         const isIsosceles = (a === b || b === c || c === a);
