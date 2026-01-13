@@ -1,39 +1,43 @@
-Exercise 1: Triangle Classification
+// Exercise 1: Triangle Classification
 
-function classifyTriangle(a, b, c) {
+const getTriangleType = (a, b, c) => {
+    if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number" || a < 0 || b < 0 || c < 0) {
+        return `Invalid input`;
+    }
     if (a + b > c && a + c > b && b + c >a) {
         if (a === b && b === c) {
-            return `Equilateral Triangle`;
+            return `Equilateral`;
         }
 
         if (a === b || b === c || c === a) {
-            return `Isosceles Triangle`;
+            return `Isosceles`;
         }
 
         if (a * a + b * b === c * c || a * a + c * c === b * b || c * c + b * b === a * a) {
-            return `Right Triangle`;
+            return `Right`;
         }
 
-        return `Scalene Triangle`;
-    } else {
-        return `Not a Triangle`;
+        return `Scalene`;
+    } 
+    else {
+        return `Not a triangle`;
     }
 }
 
-console.log(classifyTriangle(3, 3, 3)); // Equilateral Triangle
-console.log(classifyTriangle(3, 4, 5)); // Right Triangle
-console.log(classifyTriangle(1, 2, 10)); // Not a Triangle
+console.log(getTriangleType(3, 3, 3)); // Equilateral
+console.log(getTriangleType(3, 4, 5)); // Right
+console.log(getTriangleType(1, 2, 10)); // Not a Triangle
 
 
-Exercise 2: Perfect Square Check
+// Exercise 2: Perfect Square Check
 
-function isPerfectSquare(n) {
-    if (n < 0) return false;
+const isPerfectSquareNumber = (n) => {
+    if (typeof n !== "number" || n < 0) return `Invalid input`;
 
-    let squareRoot = Math.sqrt(n);
+    if ((n ** 0.5) ** 2 !== n) return false;
 
-    return Number.isInteger(squareRoot);
+    else return true;
 }
 
-console.log(isPerfectSquare(16)); // true
-console.log(isPerfectSquare(7));  // false
+console.log(isPerfectSquareNumber(16)); // true
+console.log(isPerfectSquareNumber(7));  // false
