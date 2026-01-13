@@ -32,9 +32,7 @@ const isPerfectSquareNumber = (n) => {
     if (typeof n !== "number" || n < 0) return false;
 
     const root = n ** 0.5;
-    if (root % 1 === 0) return true;
-    
-    else return false;
+    return root % 1 === 0;
 }
 
 console.log(isPerfectSquareNumber(16)); // true
