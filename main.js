@@ -1,7 +1,7 @@
 // Exercise 1: Triangle Classification
 
 const getTriangleType = (a, b, c) => {
-    if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number" || a < 0 || b < 0 || c < 0) {
+    if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number" || a <= 0 || b <= 0 || c <= 0) {
         return `Invalid input`;
     }
     if (a + b > c && a + c > b && b + c >a) {
@@ -9,13 +9,12 @@ const getTriangleType = (a, b, c) => {
             return `Equilateral`;
         }
 
-        if (a === b || b === c || c === a) {
-            return `Isosceles`;
-        }
+        const isRight = (a * a + b * b === c * c || a * a + c * c === b * b || c * c + b * b === a * a);
+        const isIsosceles = (a === b || b === c || c === a);
 
-        if (a * a + b * b === c * c || a * a + c * c === b * b || c * c + b * b === a * a) {
-            return `Right`;
-        }
+        if (isRight && isIsosceles) return `Right Isosceles`;
+        if (isRight) return `Right`;
+        if (isIsosceles) return `Isosceles`;
 
         return `Scalene`;
     } 
@@ -32,7 +31,7 @@ console.log(getTriangleType(1, 2, 10)); // Not a Triangle
 // Exercise 2: Perfect Square Check
 
 const isPerfectSquareNumber = (n) => {
-    if (typeof n !== "number" || n < 0) return `Invalid input`;
+    if (typeof n !== "number" || n < 0) return false;
 
     if ((n ** 0.5) ** 2 !== n) return false;
 
