@@ -31,9 +31,10 @@ console.log(getTriangleType(1, 2, 10)); // Not a Triangle
 const isPerfectSquareNumber = (n) => {
     if (typeof n !== "number" || n < 0) return false;
 
-    if ((n ** 0.5) ** 2 !== n) return false;
-
-    else return true;
+    const root = n ** 0.5;
+    if (root % 1 === 0) return true;
+    
+    else return false;
 }
 
 console.log(isPerfectSquareNumber(16)); // true
